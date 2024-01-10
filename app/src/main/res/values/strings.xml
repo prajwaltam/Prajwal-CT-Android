@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">CleverTapDemoApp</string>
+    <string name="add_event">Add event</string>
+    <string name="add_event_with_properties">Add Event with Properties</string>
+    <string name="add_user_properties">Add User Properties</string>
+    <string name="identity">Identity</string>
+    <string name="login_sign_up_onuserlogin">Login | Sign UP | OnUserLogin</string>
+    <string name="enter_identity_here">Enter Identity Here..!</string>
+    <string name="enter_email_here">Enter Email Here..!</string>
+    <string name="enter_phone_here">Enter Phone Here..!</string>
+    <string name="enter_name_here">Enter name Here..!</string>
+    <string name="app_inbox">App Inbox</string>
+</resources>
