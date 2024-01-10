@@ -136,7 +136,7 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
 
     override fun inboxDidInitialize()  {
         binding.appInbox.setOnClickListener {
-            val inboxTabs =
+/*            val inboxTabs =
                 arrayListOf(
                     "Promotions",
                     "Offers",
@@ -155,7 +155,7 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
                 inboxBackgroundColor = "#00FF00"
                 firstTabTitle = "First Tab"
                 cleverTapDefaultInstance?.showAppInbox(this) //Opens activity With Tabs
-            }
+            }*/
             //OR
             cleverTapDefaultInstance?.showAppInbox()//Opens Activity with default style config
         }
