@@ -87,6 +87,26 @@
                 android:text="@string/add_event_with_properties"
                 android:textColor="@color/white" />
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/BtAddWebHookEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#009688"
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/add_webhook_event"
+                android:textColor="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/BtInAppEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#009688"
+                android:paddingHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/add_in_app"
+                android:textColor="@color/white" />
+
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

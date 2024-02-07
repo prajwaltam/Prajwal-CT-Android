@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.clevertap.android.sdk.CTInboxListener
 import com.clevertap.android.sdk.CTInboxStyleConfig
 import com.clevertap.android.sdk.CleverTapAPI
+import com.clevertap.android.sdk.InAppNotificationButtonListener
 import com.clevertap.android.sdk.PushPermissionResponseListener
 import com.clevertap.android.sdk.displayunits.DisplayUnitListener
 import com.clevertap.android.sdk.displayunits.model.CleverTapDisplayUnit
@@ -18,7 +19,8 @@ import com.google.android.gms.ads.MobileAds
 import java.util.Date
 
 
-class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInboxListener, DisplayUnitListener {
+class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInboxListener, DisplayUnitListener,
+    InAppNotificationButtonListener {
     private lateinit var binding: ActivityMainBinding
     private var cleverTapDefaultInstance: CleverTapAPI? = null
 
@@ -55,6 +57,15 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
         //For events
         binding.BtAddEvent.setOnClickListener {
             cleverTapDefaultInstance?.pushEvent("Product viewed")
+        }
+
+        //WebHook events
+        binding.BtAddWebHookEvent.setOnClickListener {
+            cleverTapDefaultInstance?.pushEvent("WebHook")
+        }
+        //in events
+        binding.BtInAppEvent.setOnClickListener {
+            cleverTapDefaultInstance?.pushEvent("InApp")
         }
 
         //For events with properties
@@ -162,7 +173,6 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
     }
 
     override fun inboxMessagesDidUpdate() {
-        TODO("Not yet implemented")
     }
 
     override fun onDisplayUnitsLoaded(units: java.util.ArrayList<CleverTapDisplayUnit>?) {
@@ -177,6 +187,10 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
         }
 
         Log.d(TAG, "onDisplayUnitsLoaded: ${units[0].jsonObject.toString()}")
+    }
+
+    override fun onInAppButtonClick(payload: java.util.HashMap<String, String>?) {
+        Log.d(TAG, "onInAppButtonClick: ${payload.toString()}")
     }
 
 }
