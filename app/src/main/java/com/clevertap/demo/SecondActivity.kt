@@ -2,54 +2,67 @@ package com.clevertap.demo
 
 import android.app.NotificationManager
 import android.content.ContentValues.TAG
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.clevertap.android.sdk.CTInboxListener
-import com.clevertap.android.sdk.CTInboxStyleConfig
 import com.clevertap.android.sdk.CleverTapAPI
+import com.clevertap.android.sdk.CleverTapInstanceConfig
 import com.clevertap.android.sdk.InAppNotificationButtonListener
 import com.clevertap.android.sdk.PushPermissionResponseListener
 import com.clevertap.android.sdk.displayunits.DisplayUnitListener
 import com.clevertap.android.sdk.displayunits.model.CleverTapDisplayUnit
-import com.clevertap.demo.databinding.ActivityMainBinding
+import com.clevertap.demo.databinding.SecondActivityBinding
 import com.google.android.gms.ads.MobileAds
 import java.util.Date
 
 
-class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInboxListener, DisplayUnitListener,
+class SecondActivity : AppCompatActivity() , PushPermissionResponseListener,CTInboxListener, DisplayUnitListener,
     InAppNotificationButtonListener {
-    private lateinit var binding: ActivityMainBinding
-    private var cleverTapDefaultInstance: CleverTapAPI? = null
+    private lateinit var binding: SecondActivityBinding
+    private var clevertapAdditionalInstance: CleverTapAPI? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = SecondActivityBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
         //All initialization
-        cleverTapDefaultInstance = CleverTapAPI.getDefaultInstance(applicationContext)
-        CleverTapAPI.setDebugLevel(3)
-        MobileAds.initialize(this) {}
-        cleverTapDefaultInstance = CleverTapAPI.getDefaultInstance(this)
-        cleverTapDefaultInstance?.registerPushPermissionNotificationResponseListener(this)
+        val clevertapAdditionalInstanceConfig = CleverTapInstanceConfig.createInstance(
+            this,
+            "TEST-56R-747-WW7Z",
+            "TEST-a4a-265"
+        )
+
+        clevertapAdditionalInstanceConfig.setDebugLevel(CleverTapAPI.LogLevel.DEBUG); // default is CleverTapAPI.LogLevel.INFO
+
+        clevertapAdditionalInstanceConfig.isAnalyticsOnly = false; // disables the user engagement features of the instance, default is false
+
+        clevertapAdditionalInstanceConfig.useGoogleAdId(false); // enables the collection of the Google ADID by the instance, default is false
+
+        clevertapAdditionalInstanceConfig.enablePersonalization(true);
+        clevertapAdditionalInstance = CleverTapAPI.instanceWithConfig(applicationContext,clevertapAdditionalInstanceConfig)
+
+
+
+
+
+        clevertapAdditionalInstance?.registerPushPermissionNotificationResponseListener(this)
 
 
         //init app inbox
-        cleverTapDefaultInstance?.apply {
-            ctNotificationInboxListener = this@MainActivity
+        clevertapAdditionalInstance?.apply {
+            ctNotificationInboxListener = this@SecondActivity
             //Initialize the inbox and wait for callbacks on overridden methods
             initializeInbox()
         }
 
 
         //Native display
-        cleverTapDefaultInstance?.apply {
-            setDisplayUnitListener(this@MainActivity)
+        clevertapAdditionalInstance?.apply {
+            setDisplayUnitListener(this@SecondActivity)
         }
 
 
@@ -57,26 +70,16 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
 
         //For events
         binding.BtAddEvent.setOnClickListener {
-            cleverTapDefaultInstance?.pushEvent("Product viewed")
+            clevertapAdditionalInstance?.pushEvent("Product viewed second")
         }
 
         //WebHook events
         binding.BtAddWebHookEvent.setOnClickListener {
-            cleverTapDefaultInstance?.pushEvent("WebHook")
+            clevertapAdditionalInstance?.pushEvent("WebHook second")
         }
         //in events
         binding.BtInAppEvent.setOnClickListener {
-            cleverTapDefaultInstance?.pushEvent("InApp")
-        }
-        //push template
-        binding.BtPushTemplateEvent.setOnClickListener {
-            cleverTapDefaultInstance?.pushEvent("PushTemplate")
-        }
-
-        //next screen button
-        binding.nextScreen.setOnClickListener {
-           val intent = Intent(this@MainActivity,SecondActivity::class.java)
-            startActivity(intent)
+            clevertapAdditionalInstance?.pushEvent("InApp second")
         }
 
         //For events with properties
@@ -88,7 +91,7 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
             prodViewedAction["Price"] = 59.99
             prodViewedAction["Date"] = Date()
 
-            cleverTapDefaultInstance?.pushEvent("Product viewed", prodViewedAction)
+            clevertapAdditionalInstance?.pushEvent("Product viewed second", prodViewedAction)
         }
 
         //For user events
@@ -122,7 +125,7 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
             profileUpdate["MyStuff"] = otherStuff //String Array
 
             //updating profile information on login
-            CleverTapAPI.getDefaultInstance(applicationContext)?.onUserLogin(profileUpdate)
+            CleverTapAPI.instanceWithConfig(applicationContext,clevertapAdditionalInstanceConfig)?.onUserLogin(profileUpdate)
 
             Toast.makeText(this,"Done",Toast.LENGTH_SHORT).show()
         }
@@ -153,7 +156,7 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
 
     override fun onDestroy() {
         super.onDestroy()
-        cleverTapDefaultInstance?.unregisterPushPermissionNotificationResponseListener(this)
+        clevertapAdditionalInstance?.unregisterPushPermissionNotificationResponseListener(this)
     }
 
     override fun inboxDidInitialize()  {
@@ -179,7 +182,7 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
                 cleverTapDefaultInstance?.showAppInbox(this) //Opens activity With Tabs
             }*/
             //OR
-            cleverTapDefaultInstance?.showAppInbox()//Opens Activity with default style config
+            clevertapAdditionalInstance?.showAppInbox()//Opens Activity with default style config
         }
     }
 

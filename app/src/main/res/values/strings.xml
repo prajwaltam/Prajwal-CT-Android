@@ -12,4 +12,5 @@
     <string name="app_inbox">App Inbox</string>
     <string name="add_webhook_event">Add WebHook Event</string>
     <string name="add_in_app">Add In App</string>
+    <string name="next_screen">Next screen</string>
 </resources>

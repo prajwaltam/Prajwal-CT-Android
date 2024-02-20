@@ -29,6 +29,13 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".SecondActivity"
+            android:screenOrientation="fullSensor"
+            android:exported="true">
+
+        </activity>
+
 <!--        tejas-Demo us1-->
 <!--        <meta-data-->
 <!--            android:name="CLEVERTAP_ACCOUNT_ID"-->
@@ -68,6 +75,27 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
+
+<!--        <service-->
+<!--            android:name="MyFcmMessageListenerService"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
+<!--                <action android:name="com.clevertap.PT_PUSH_EVENT"/>-->
+<!--            </intent-filter>-->
+<!--        </service>-->
+
+<!--        <receiver-->
+<!--            android:name="com.clevertap.android.pushtemplates.PTPushNotificationReceiver"-->
+<!--            android:exported="false"-->
+<!--            android:enabled="true">-->
+<!--        </receiver>-->
+
+<!--        <receiver-->
+<!--            android:name="com.clevertap.android.pushtemplates.PushTemplateReceiver"-->
+<!--            android:exported="false"-->
+<!--            android:enabled="true">-->
+<!--        </receiver>-->
     </application>
 
 </manifest>

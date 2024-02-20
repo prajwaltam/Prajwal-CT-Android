@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SecondActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
@@ -107,16 +107,6 @@
                 android:text="@string/add_in_app"
                 android:textColor="@color/white" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/BtPushTemplateEvent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="#009688"
-                android:paddingHorizontal="16dp"
-                android:layout_marginTop="16dp"
-                android:text="Add Push Template"
-                android:textColor="@color/white" />
-
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -128,14 +118,6 @@
         android:layout_height="wrap_content"
         android:text="@string/app_inbox"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <Button
-        android:id="@+id/nextScreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/next_screen"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
 
