@@ -34,9 +34,14 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
         //All initialization
         cleverTapDefaultInstance = CleverTapAPI.getDefaultInstance(applicationContext)
         CleverTapAPI.setDebugLevel(3)
+
         MobileAds.initialize(this) {}
         cleverTapDefaultInstance = CleverTapAPI.getDefaultInstance(this)
         cleverTapDefaultInstance?.registerPushPermissionNotificationResponseListener(this)
+
+        //to capture device information
+        cleverTapDefaultInstance?.enableDeviceNetworkInfoReporting(true);
+
 
 
         //init app inbox
@@ -70,7 +75,9 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
         }
         //push template
         binding.BtPushTemplateEvent.setOnClickListener {
-            cleverTapDefaultInstance?.pushEvent("PushTemplate")
+            val intent = Intent(this@MainActivity,PushTemplateActivity::class.java)
+            startActivity(intent)
+//            cleverTapDefaultInstance?.pushEvent("PushTemplate")
         }
 
         //next screen button
@@ -156,13 +163,18 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
         cleverTapDefaultInstance?.unregisterPushPermissionNotificationResponseListener(this)
     }
 
+
     override fun inboxDidInitialize()  {
+        //default App-InBox
         binding.appInbox.setOnClickListener {
-/*            val inboxTabs =
+            cleverTapDefaultInstance?.showAppInbox()//Opens Activity with default style config
+        }
+
+        //
+        binding.appInboxCustom.setOnClickListener {
+            val inboxTabs =
                 arrayListOf(
-                    "Promotions",
-                    "Offers",
-                    "Others"
+                    "First Tab","Promotions",
                 )//Anything after the first 2 will be ignored
             CTInboxStyleConfig().apply {
                 tabs = inboxTabs //Do not use this if you don't want to use tabs
@@ -175,11 +187,9 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
                 navBarTitle = "MY INBOX"
                 navBarColor = "#FFFFFF"
                 inboxBackgroundColor = "#00FF00"
-                firstTabTitle = "First Tab"
                 cleverTapDefaultInstance?.showAppInbox(this) //Opens activity With Tabs
-            }*/
-            //OR
-            cleverTapDefaultInstance?.showAppInbox()//Opens Activity with default style config
+            }
+
         }
     }
 

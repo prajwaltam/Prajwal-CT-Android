@@ -10,6 +10,7 @@
     <string name="enter_phone_here">Enter Phone Here..!</string>
     <string name="enter_name_here">Enter name Here..!</string>
     <string name="app_inbox">App Inbox</string>
+    <string name="app_inbox_custom">App Inbox Custom</string>
     <string name="add_webhook_event">Add WebHook Event</string>
     <string name="add_in_app">Add In App</string>
     <string name="next_screen">Next screen</string>

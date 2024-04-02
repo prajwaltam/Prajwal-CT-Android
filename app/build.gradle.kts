@@ -50,7 +50,7 @@ dependencies {
 
 
     //Added for cleverTap
-    implementation ("com.clevertap.android:clevertap-android-sdk:5.0.0") // checkout the latest sdk version at https://github.com/CleverTap/clevertap-android-sdk/blob/master/README.md#-installation
+    implementation ("com.clevertap.android:clevertap-android-sdk:6.1.1") // checkout the latest sdk version at https://github.com/CleverTap/clevertap-android-sdk/blob/master/README.md#-installation
     implementation ("com.google.firebase:firebase-messaging:23.3.1")
     //Mandatory for CleverTap Android SDK v3.6.4 and above add the following -
     implementation ("com.android.installreferrer:installreferrer:2.2")
@@ -72,7 +72,7 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.12.0")
 
     //push template SDK
-    implementation("com.clevertap.android:push-templates:1.0.9")
+    implementation("com.clevertap.android:push-templates:1.2.3")
 
 
 }
