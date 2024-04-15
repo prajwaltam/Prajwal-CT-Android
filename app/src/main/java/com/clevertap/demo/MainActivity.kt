@@ -135,7 +135,14 @@ class MainActivity : AppCompatActivity() , PushPermissionResponseListener,CTInbo
         }
 
 
+        //Profile push email
+        binding.BtProfilePush.setOnClickListener {
+            val profileUpdate = HashMap<String, Any>()
+            profileUpdate["Email"] = binding.etEmail.text.toString() // Email address of the user
+            CleverTapAPI.getDefaultInstance(applicationContext)?.pushProfile(profileUpdate)
 
+            Toast.makeText(this,"Done",Toast.LENGTH_SHORT).show()
+        }
 
 
 
