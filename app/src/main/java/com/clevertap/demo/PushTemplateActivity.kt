@@ -39,6 +39,9 @@ class PushTemplateActivity : AppCompatActivity() {
         binding.BtFiveIconsTemplate.setOnClickListener {
             cleverTapDefaultInstance?.pushEvent("Five Icons Template")
         }
+        binding.BtInputBoxTemplate.setOnClickListener {
+            cleverTapDefaultInstance?.pushEvent("InputBoxTemplate")
+        }
 
     }
 }

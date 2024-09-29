@@ -74,6 +74,8 @@ dependencies {
     //push template SDK
     implementation("com.clevertap.android:push-templates:1.2.3")
 
+    implementation("com.mixpanel.android:mixpanel-android:7.+")
+
 
 }
 
