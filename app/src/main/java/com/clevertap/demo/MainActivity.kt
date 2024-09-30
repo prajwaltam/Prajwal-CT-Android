@@ -150,7 +150,7 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
 
         //next screen button
         binding.nextScreen.setOnClickListener {
-            val intent = Intent(this@MainActivity, SecondActivity::class.java)
+            val intent = Intent(this@MainActivity, PEActivity::class.java)
             startActivity(intent)
         }
 

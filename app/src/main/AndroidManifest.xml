@@ -17,6 +17,9 @@
         android:theme="@style/Theme.CleverTapDemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".PEActivity"
+            android:exported="false" />
+        <activity
             android:name=".WebActivity"
             android:exported="false" />
         <activity
@@ -34,43 +37,30 @@
         <activity
             android:name=".SecondActivity"
             android:exported="true"
-            android:screenOrientation="fullSensor" />
-
-        <!-- tejas-Demo us1 -->
-<!--         <meta-data-->
-<!--         android:name="CLEVERTAP_ACCOUNT_ID"-->
-<!--         android:value="TEST-4WK-6WZ-Z76Z"/>-->
-<!--         <meta-data-->
-<!--         android:name="CLEVERTAP_TOKEN"-->
-<!--         android:value="TEST-106-304"/>-->
-<!--         <meta-data-->
-<!--         android:name="CLEVERTAP_REGION"-->
-<!--         android:value="us1"/>-->
-
-
-
-
-
-<!--        TEST-Prajwal - Test eu1 jithendra-->
+            android:screenOrientation="fullSensor" /> <!-- tejas-Demo us1 -->
+        <!-- <meta-data -->
+        <!-- android:name="CLEVERTAP_ACCOUNT_ID" -->
+        <!-- android:value="TEST-4WK-6WZ-Z76Z"/> -->
+        <!-- <meta-data -->
+        <!-- android:name="CLEVERTAP_TOKEN" -->
+        <!-- android:value="TEST-106-304"/> -->
+        <!-- <meta-data -->
+        <!-- android:name="CLEVERTAP_REGION" -->
+        <!-- android:value="us1"/> -->
+        <!-- TEST-Prajwal - Test eu1 jithendra -->
         <meta-data
             android:name="CLEVERTAP_ACCOUNT_ID"
             android:value="TEST-867-84W-RZ7Z" />
         <meta-data
             android:name="CLEVERTAP_TOKEN"
-            android:value="TEST-04b-a6b" />
-
-
-
-        <!-- Praju-Demo -->
-<!--        <meta-data-->
-<!--            android:name="CLEVERTAP_ACCOUNT_ID"-->
-<!--            android:value="46R-747-WW7Z" />-->
-<!--        <meta-data-->
-<!--            android:name="CLEVERTAP_TOKEN"-->
-<!--            android:value="a4a-264" />-->
-
+            android:value="TEST-04b-a6b" /> <!-- Praju-Demo -->
+        <!-- <meta-data -->
+        <!-- android:name="CLEVERTAP_ACCOUNT_ID" -->
+        <!-- android:value="46R-747-WW7Z" /> -->
+        <!-- <meta-data -->
+        <!-- android:name="CLEVERTAP_TOKEN" -->
+        <!-- android:value="a4a-264" /> -->
         <!-- IMPORTANT: To force use Google AD ID to uniquely identify  users, use the following meta tag. GDPR mandates that if you are using this tag, there is prominent disclousure to your end customer in their application. Read more about GDPR here - https://clevertap.com/blog/in-preparation-of-gdpr-compliance/ -->
-
         <meta-data
             android:name="CLEVERTAP_USE_GOOGLE_AD_ID"
             android:value="0" /> <!-- Sample Ad Manager app ID: ca-app-pub-3940256099942544~3347511713 -->
