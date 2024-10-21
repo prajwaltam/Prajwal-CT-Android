@@ -4,6 +4,7 @@ import android.app.NotificationManager
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,7 @@ import com.google.android.gms.ads.MobileAds
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
+import com.google.firebase.messaging.FirebaseMessaging
 import com.mixpanel.android.mpmetrics.MixpanelAPI
 import org.json.JSONObject
 import java.util.Date
@@ -41,6 +43,19 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
         setContentView(view)
         firebaseAnalytics = Firebase.analytics
 
+//        FirebaseMessaging.getInstance().token
+
+//        CleverTapAPI.getDefaultInstance(this)!!.suspendInAppNotifications()
+        Log.d(TAG, "onCreate: suspend called")
+
+
+        Handler().postDelayed({
+            // doSomethingHere()
+            Log.d(TAG, "onCreate: resume called")
+
+//        CleverTapAPI.getDefaultInstance(this)!!.resumeInAppNotifications()
+
+        }, 10000)
 
         val bundle = Bundle()
         bundle.putString(FirebaseAnalytics.Param.ITEM_ID, "123")
@@ -178,7 +193,9 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
 //            prodViewedAction["variant_id"] = "12314234212"
 //            prodViewedAction["variant_id"] = "456456456"
 //            prodViewedAction["variant_id"] = "786534545"
-            prodViewedAction["variant_id"] = "5553434"
+            prodViewedAction["variant_id"] = "2738654273845"
+            prodViewedAction["computed_variant_id"] = "VAR_44179698057378"
+            prodViewedAction["computed_product_id"] = "PRD_8206989721762"
 //            prodViewedAction["Category"] = "Mens Accessories"
 //            prodViewedAction["Price"] = 50
 //            prodViewedAction["Color"] = randomColor
