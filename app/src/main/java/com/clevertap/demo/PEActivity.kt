@@ -2,6 +2,7 @@ package com.clevertap.demo
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.clevertap.android.sdk.CleverTapAPI
 import com.clevertap.android.sdk.variables.Var
@@ -10,7 +11,7 @@ import com.clevertap.android.sdk.variables.callbacks.VariableCallback
 
 class PEActivity : AppCompatActivity() {
     private var cleverTap: CleverTapAPI? = null
-    val user = HashMap<String, Any>()
+    private var user = HashMap<String, Any>()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,7 +73,23 @@ class PEActivity : AppCompatActivity() {
         cleverTap!!.fetchVariables { isSuccess ->
             // isSuccess is true when server request is successful, false otherwise
             Log.d("ttt", "onCreate: fetchVariables =>$isSuccess")
+            user = (cleverTap!!.getVariableValue("userInfo")!! as HashMap<String, Any>)
+
+            Log.d("ttt", "onCreate: userType => "+user["userType"])
+            val userType = user["userType"]
+            if(userType == "Silver"){
+                Toast.makeText(this,""+userType,Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this,""+userType,Toast.LENGTH_SHORT).show()
+            }
+
         }
+
+
+
+
+
+
 
 
 
