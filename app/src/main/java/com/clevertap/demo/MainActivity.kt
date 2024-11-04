@@ -228,11 +228,14 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
 
             //custom profile properties
             val stuff = ArrayList<String>()
-            stuff.add("bag")
-            stuff.add("shoes")
+            stuff.add("123")
+            stuff.add("456")
+            stuff.add("789")
+            stuff.add("001")
+            stuff.add("002")
             profileUpdate["MyStuff"] = stuff //ArrayList of Strings
-            val otherStuff = arrayOf("Jeans", "Perfume")
-            profileUpdate["MyStuff"] = otherStuff //String Array
+//            val otherStuff = arrayOf("Jeans", "Perfume")
+//            profileUpdate["MyStuff"] = otherStuff //String Array
 
             //updating profile information on login
             CleverTapAPI.getDefaultInstance(applicationContext)?.onUserLogin(profileUpdate)
