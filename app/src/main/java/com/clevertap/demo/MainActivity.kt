@@ -209,6 +209,7 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
             val profileUpdate = HashMap<String, Any>()
             profileUpdate["Name"] = binding.etName.text.toString() // String
 //            profileUpdate["Identity"] = ""+ cleverTapDefaultInstance!!.cleverTapID;  // String or number
+//            profileUpdate["Identity"] = binding.etIdentity.text.toString()  // String or number
             profileUpdate["Identity"] = binding.etIdentity.text.toString()  // String or number
             profileUpdate["Email"] = binding.etEmail.text.toString() // Email address of the user
             profileUpdate["Phone"] =
@@ -239,6 +240,11 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
 
             //updating profile information on login
             CleverTapAPI.getDefaultInstance(applicationContext)?.onUserLogin(profileUpdate)
+
+
+            CleverTapAPI.getDefaultInstance(applicationContext)?.removeMultiValueForKey("MyStuff","123")
+
+            Log.d(TAG, " ct user property for MyStuff ==> "+cleverTapDefaultInstance?.getProperty("MyStuff"))
 
             Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
         }

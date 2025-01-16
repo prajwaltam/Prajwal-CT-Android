@@ -48,16 +48,23 @@
 <!--         android:value="us1"/>-->
 
 
+        <!--        TEST-Primary - phone eu1 -->
+        <meta-data
+            android:name="CLEVERTAP_ACCOUNT_ID"
+            android:value="865-9W9-6K7Z" />
+        <meta-data
+            android:name="CLEVERTAP_TOKEN"
+            android:value="TEST-c0c-56b" />
 
 
 
 <!--        TEST-Prajwal - Test eu1 jithendra-->
-        <meta-data
-            android:name="CLEVERTAP_ACCOUNT_ID"
-            android:value="TEST-867-84W-RZ7Z" />
-        <meta-data
-            android:name="CLEVERTAP_TOKEN"
-            android:value="TEST-04b-a6b" />
+<!--        <meta-data-->
+<!--            android:name="CLEVERTAP_ACCOUNT_ID"-->
+<!--            android:value="TEST-867-84W-RZ7Z" />-->
+<!--        <meta-data-->
+<!--            android:name="CLEVERTAP_TOKEN"-->
+<!--            android:value="TEST-04b-a6b" />-->
 
 
 

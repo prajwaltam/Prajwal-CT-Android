@@ -29,11 +29,11 @@ class SecondActivity : AppCompatActivity() , PushPermissionResponseListener,CTIn
         val view = binding.root
         setContentView(view)
 
-        //All initialization
+        //Account 2 initialization
         val clevertapAdditionalInstanceConfig = CleverTapInstanceConfig.createInstance(
             this,
-            "TEST-56R-747-WW7Z",
-            "TEST-a4a-265"
+            "TEST-4R4-KW9-RW7Z",
+            "TEST-c03-424"
         )
 
         clevertapAdditionalInstanceConfig.setDebugLevel(CleverTapAPI.LogLevel.DEBUG); // default is CleverTapAPI.LogLevel.INFO
