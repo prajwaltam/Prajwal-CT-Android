@@ -20,7 +20,6 @@ import com.google.android.gms.ads.MobileAds
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
-import com.google.firebase.messaging.FirebaseMessaging
 import com.mixpanel.android.mpmetrics.MixpanelAPI
 import org.json.JSONObject
 import java.util.Date
@@ -128,6 +127,9 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
         //to capture device information
         cleverTapDefaultInstance?.enableDeviceNetworkInfoReporting(true);
 
+        cleverTapDefaultInstance?.setInAppNotificationButtonListener(this);
+
+
 
         //init app inbox
         cleverTapDefaultInstance?.apply {
@@ -146,6 +148,7 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
         //For events
         binding.BtAddEvent.setOnClickListener {
             cleverTapDefaultInstance?.pushEvent("Product viewed")
+            cleverTapDefaultInstance?.pushEvent("Product Viewed")
         }
 
         //WebHook events
@@ -164,8 +167,9 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
         }
 
         //next screen button
-        binding.nextScreen.setOnClickListener {
-            val intent = Intent(this@MainActivity, SecondActivity::class.java)
+        binding.signedcall.setOnClickListener {
+//            val intent = Intent(this@MainActivity, WebActivity::class.java)
+            val intent = Intent(this@MainActivity, SignedCallPP::class.java)
             startActivity(intent)
         }
 
@@ -215,6 +219,7 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
             profileUpdate["Phone"] =
                 "+91" + binding.etPhone.text.toString() // Phone (with the country code, starting with +)
             profileUpdate["Gender"] = "M" // Can be either M or F
+            profileUpdate["ResortBooked"] = 0
             profileUpdate["DOB"] =
                 Date() // Date of Birth. Set the Date object to the appropriate value
 
@@ -229,22 +234,20 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
 
             //custom profile properties
             val stuff = ArrayList<String>()
-            stuff.add("123")
-            stuff.add("456")
-            stuff.add("789")
-            stuff.add("001")
-            stuff.add("002")
-            profileUpdate["MyStuff"] = stuff //ArrayList of Strings
+            stuff.add("CT000002")
+            stuff.add("CT000001")
+
+//            profileUpdate["MyStuff"] = stuff //ArrayList of Strings
 //            val otherStuff = arrayOf("Jeans", "Perfume")
-//            profileUpdate["MyStuff"] = otherStuff //String Array
+            profileUpdate["ProductList"] = stuff //String Array
 
             //updating profile information on login
-            CleverTapAPI.getDefaultInstance(applicationContext)?.onUserLogin(profileUpdate)
+            CleverTapAPI.getDefaultInstance(applicationContext)?.onUserLogin(profileUpdate,/*"testCustomID123"*/)
 
 
-            CleverTapAPI.getDefaultInstance(applicationContext)?.removeMultiValueForKey("MyStuff","123")
+//            CleverTapAPI.getDefaultInstance(applicationContext)?.removeMultiValueForKey("MyStuff","123")
 
-            Log.d(TAG, " ct user property for MyStuff ==> "+cleverTapDefaultInstance?.getProperty("MyStuff"))
+//            Log.d(TAG, " ct user property for MyStuff ==> "+cleverTapDefaultInstance?.getProperty("MyStuff"))
 
             Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
         }
@@ -339,6 +342,7 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
 
     override fun onInAppButtonClick(payload: java.util.HashMap<String, String>?) {
         Log.d(TAG, "onInAppButtonClick: ${payload.toString()}")
+        Toast.makeText(applicationContext,payload.toString(),Toast.LENGTH_SHORT).show()
     }
 
 }

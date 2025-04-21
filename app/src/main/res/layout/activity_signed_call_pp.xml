@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white"
+    tools:context=".SignedCallPP"
+>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+        android:id="@+id/cl_register"
+    android:visibility="visible"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/common_google_signin_btn_icon_light_normal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="CleverTap Logo"
+        android:layout_marginTop="32dp"/>
+
+    <EditText
+        android:id="@+id/input_cuid"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter CUID"
+        android:padding="12dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"/>
+
+    <CheckBox
+        android:id="@+id/privacy_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="By checking this, you agree to our privacy policy"
+        app:layout_constraintTop_toBottomOf="@id/input_cuid"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="24dp"/>
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="REGISTER AND CONTINUE"
+        android:backgroundTint="@color/red"
+        android:textColor="@color/white"
+        android:padding="12dp"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/privacy_checkbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"/>
+
+    <TextView
+        android:id="@+id/rules_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Rules for CUID selection\n\n** It must range between 5 and 50 characters.\n** It must start with either alphabet or number.\n** It is case-sensitive and only is underscore allowed as a special character.\n** Must be unique for every user."
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/btn_register"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:visibility="gone"
+        tools:context=".MainActivity">
+
+        <!-- Logged-in User Info -->
+        <TextView
+            android:id="@+id/tvLoggedInUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Logged in CUID: praju_11777"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- CleverTap Logo -->
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/googleg_standard_color_18"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toBottomOf="@id/tvLoggedInUser"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- Receiver CUID Input -->
+        <EditText
+            android:id="@+id/etReceiverCuid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Receiver's cuid"
+            android:padding="12dp"
+            android:background="@android:drawable/editbox_background"
+            app:layout_constraintTop_toBottomOf="@id/ivLogo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+        <!-- Call Context Input -->
+        <EditText
+            android:id="@+id/etCallContext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Enter Context of Call (ex. Clevertap is calling)"
+            android:padding="12dp"
+            android:background="@android:drawable/editbox_background"
+            app:layout_constraintTop_toBottomOf="@id/etReceiverCuid"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="12dp" />
+
+        <!-- Initiate VoIP Call Button -->
+        <Button
+            android:id="@+id/btnInitiateCall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="INITIATE VOIP CALL"
+            android:backgroundTint="@color/red"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/etCallContext"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="24dp" />
+
+        <!-- Logout Button -->
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="LOGOUT"
+            android:textColor="@android:color/white"
+            app:layout_constraintTop_toBottomOf="@id/btnInitiateCall"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <!-- Note Section -->
+        <TextView
+            android:id="@+id/tvNote"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:padding="8dp"
+            android:text="NOTE\n\n** Make sure your internet connection is working properly.\n** Receiver's CUID is case-sensitive.\n** To initiate a VoIP call, Microphone permission is necessary..."
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnLogout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
