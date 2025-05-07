@@ -3,11 +3,11 @@ package com.clevertap.demo
 import android.util.Log
 import com.clevertap.android.pushtemplates.PushTemplateNotificationHandler
 import com.clevertap.android.pushtemplates.TemplateRenderer
-import com.clevertap.android.sdk.ActivityLifecycleCallback
 import com.clevertap.android.sdk.Application
 import com.clevertap.android.sdk.CleverTapAPI
 import com.clevertap.android.sdk.interfaces.NotificationHandler
-import com.google.firebase.messaging.FirebaseMessaging
+import com.clevertap.android.signedcall.fcm.SignedCallNotificationHandler
+
 
 class CoreApplication: Application() {
      private var cleverTapDefaultInstance: CleverTapAPI? = null
@@ -21,6 +21,9 @@ class CoreApplication: Application() {
         CleverTapAPI.setDebugLevel(3)
 
         CleverTapAPI.setNotificationHandler(PushTemplateNotificationHandler() as NotificationHandler);
+
+        CleverTapAPI.setSignedCallNotificationHandler(SignedCallNotificationHandler())
+
         TemplateRenderer.debugLevel = 3
 
     }

@@ -1,9 +1,11 @@
 package com.clevertap.demo
 
 import android.content.Context
+import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import com.clevertap.android.sdk.CleverTapAPI
 import com.clevertap.android.sdk.inapp.CTLocalInApp
@@ -24,6 +26,7 @@ class SignedCallPP : AppCompatActivity() {
     private lateinit var binding:ActivitySignedCallPpBinding
 
     private var cuid = ""
+    private var isSignedCallSdkInitDone = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +43,10 @@ class SignedCallPP : AppCompatActivity() {
             override fun onSuccess() {
                 //App is notified on the main thread when the Signed Call SDK is initialized
                 Toast.makeText(applicationContext, "init success", Toast.LENGTH_SHORT).show()
+                isSignedCallSdkInitDone = true
+                binding.clRegister.visibility = View.GONE
+                binding.clLogin.visibility = View.VISIBLE
+                binding.tvLoggedInUser.text = binding.inputCuid.text.toString()
 
             }
 
@@ -94,14 +101,13 @@ class SignedCallPP : AppCompatActivity() {
         }
 
 
-        SignedCallAPI.getInstance().call(
+        binding.btnInitiateCall.setOnClickListener { SignedCallAPI.getInstance().call(
             applicationContext,
-            "receiverCuid",
+            binding.etReceiverCuid.text.toString(),
             "contextOfCall",
             JSONObject(),
             outgoingCallResponseListener
-        )
-
+        ) }
     }
 
     private fun initSDK(signedCallInitListener: SignedCallInitResponse) {
@@ -137,8 +143,10 @@ class SignedCallPP : AppCompatActivity() {
             .build()
 
 
-        SignedCallAPI.getInstance()
-            .init(applicationContext, initConfiguration, cleverTapAPI, signedCallInitListener)
+        SignedCallAPI.getInstance().init(applicationContext, initConfiguration, cleverTapAPI, signedCallInitListener)
+
+
+        SignedCallAPI.setDebugLevel(SignedCallAPI.LogLevel.VERBOSE);
 
         val status = SignedCallAPI.getInstance().isInitialized(applicationContext)
         Log.d("status", "Initialization status: $status")

@@ -4,6 +4,7 @@
     <!-- Required to allow the app to send events and user profile information -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- Recommended so that CleverTap knows when to attempt a network call -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name=".CoreApplication"
@@ -57,10 +58,10 @@
         <!-- TEST-Prajwal - Test eu1 jithendra -->
         <meta-data
             android:name="CLEVERTAP_ACCOUNT_ID"
-            android:value="TEST-867-84W-RZ7Z" />
+            android:value="867-84W-RZ7Z" />
         <meta-data
             android:name="CLEVERTAP_TOKEN"
-            android:value="TEST-04b-a6b" /> <!-- EST-Prajwal-Demo2 -->
+            android:value="04b-a6b" /> <!-- EST-Prajwal-Demo2 -->
         <!-- <meta-data -->
         <!-- android:name="CLEVERTAP_ACCOUNT_ID" -->
         <!-- android:value="TEST-4R4-KW9-RW7Z" /> -->
