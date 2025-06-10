@@ -17,7 +17,7 @@ class CoreApplication: Application() {
 
         Log.d("ttt", "onCreate: application onCreate called")
 
-        cleverTapDefaultInstance = CleverTapAPI.getDefaultInstance(applicationContext)
+        cleverTapDefaultInstance = CleverTapAPI.getDefaultInstance(applicationContext,)
         CleverTapAPI.setDebugLevel(3)
 
         CleverTapAPI.setNotificationHandler(PushTemplateNotificationHandler() as NotificationHandler);

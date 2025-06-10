@@ -51,7 +51,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="@string/enter_phone_here"
-                android:text="9164611000"
+                android:text="9964611000"
                 android:layout_marginVertical="8dp"/>
 
 

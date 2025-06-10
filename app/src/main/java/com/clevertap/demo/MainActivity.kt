@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
 
 
         //All initialization
-        cleverTapDefaultInstance = CleverTapAPI.getDefaultInstance(applicationContext)
+        cleverTapDefaultInstance = CleverTapAPI.getDefaultInstance(applicationContext,)
         CleverTapAPI.setDebugLevel(3)
 
 
@@ -98,18 +98,6 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
 
         //extra user property
         firebaseAnalytics.setUserProperty("AppName", "ManaYatri");
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -214,10 +202,10 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
             profileUpdate["Name"] = binding.etName.text.toString() // String
 //            profileUpdate["Identity"] = ""+ cleverTapDefaultInstance!!.cleverTapID;  // String or number
 //            profileUpdate["Identity"] = binding.etIdentity.text.toString()  // String or number
-            profileUpdate["Identity"] = binding.etIdentity.text.toString()  // String or number
-            profileUpdate["Email"] = binding.etEmail.text.toString() // Email address of the user
-            profileUpdate["Phone"] =
-                "+91" + binding.etPhone.text.toString() // Phone (with the country code, starting with +)
+            profileUpdate["Identity"] = binding.etName.text.toString()+binding.etPhone.text.toString()  // String or number
+//            profileUpdate["Email"] = binding.etEmail.text.toString() // Email address of the user
+//            profileUpdate["Phone"] =
+//                "+91" + binding.etPhone.text.toString() // Phone (with the country code, starting with +)
             profileUpdate["Gender"] = "M" // Can be either M or F
             profileUpdate["ResortBooked"] = 0
             profileUpdate["DOB"] =
@@ -242,7 +230,7 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
             profileUpdate["ProductList"] = stuff //String Array
 
             //updating profile information on login
-            CleverTapAPI.getDefaultInstance(applicationContext)?.onUserLogin(profileUpdate,/*"testCustomID123"*/)
+            CleverTapAPI.getDefaultInstance(applicationContext)?.onUserLogin(profileUpdate,""+binding.etName.text.toString()+binding.etPhone.text.toString())
 
 
 //            CleverTapAPI.getDefaultInstance(applicationContext)?.removeMultiValueForKey("MyStuff","123")
