@@ -73,8 +73,8 @@ dependencies {
     implementation("androidx.viewpager:viewpager:1.0.0")
     implementation("com.github.bumptech.glide:glide:4.12.0")
 
-    //push template SDK
-    implementation("com.clevertap.android:push-templates:1.0.9")
+    //push template SDK // to remove close button from five icon
+    implementation("com.clevertap.android:push-templates:2.0.0")
 
     implementation("com.mixpanel.android:mixpanel-android:7.+")
 

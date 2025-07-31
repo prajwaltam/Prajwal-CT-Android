@@ -3,6 +3,7 @@ package com.clevertap.demo
 import android.app.NotificationManager
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.location.Location
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
@@ -22,7 +23,9 @@ import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
 import com.mixpanel.android.mpmetrics.MixpanelAPI
 import org.json.JSONObject
+import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 
 class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInboxListener,
@@ -86,6 +89,16 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
         //All initialization
         cleverTapDefaultInstance = CleverTapAPI.getDefaultInstance(applicationContext)
         CleverTapAPI.setDebugLevel(3)
+        cleverTapDefaultInstance?.enableDeviceNetworkInfoReporting(true)
+
+        val manualLocation = Location("manualProvider").apply {
+            latitude = 12.9716
+            longitude = 77.5946
+            accuracy = 5.0f // optional
+            time = System.currentTimeMillis()
+        }
+        cleverTapDefaultInstance?.location = manualLocation
+
 
 
         //sending CTid To Firebase
@@ -220,6 +233,9 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
                 "+91" + binding.etPhone.text.toString() // Phone (with the country code, starting with +)
             profileUpdate["Gender"] = "M" // Can be either M or F
             profileUpdate["ResortBooked"] = 0
+            profileUpdate["fevWager3"] = "25.0"
+            profileUpdate["walletBalance"] = 100
+            profileUpdate["ResortBooked"] = 0
             profileUpdate["DOB"] =
                 Date() // Date of Birth. Set the Date object to the appropriate value
 
@@ -245,6 +261,7 @@ class MainActivity : AppCompatActivity(), PushPermissionResponseListener, CTInbo
             CleverTapAPI.getDefaultInstance(applicationContext)?.onUserLogin(profileUpdate,/*"testCustomID123"*/)
 
 
+            cleverTapDefaultInstance?.location
 //            CleverTapAPI.getDefaultInstance(applicationContext)?.removeMultiValueForKey("MyStuff","123")
 
 //            Log.d(TAG, " ct user property for MyStuff ==> "+cleverTapDefaultInstance?.getProperty("MyStuff"))
