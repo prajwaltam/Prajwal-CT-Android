@@ -18,6 +18,12 @@
         android:theme="@style/Theme.CleverTapDemoApp"
         tools:targetApi="31">
         <activity
+            android:name=".BottomNavigation"
+            android:exported="true"
+            android:label="@string/title_activity_bottom_navigation" >
+
+        </activity>
+        <activity
             android:name=".SignedCallPP"
             android:exported="false" />
         <activity
@@ -55,13 +61,26 @@
         <!-- <meta-data -->
         <!-- android:name="CLEVERTAP_TOKEN" -->
         <!-- android:value="TEST-c0c-56b" /> -->
+
         <!-- TEST-Prajwal - Test eu1 jithendra -->
+<!--        <meta-data-->
+<!--            android:name="CLEVERTAP_ACCOUNT_ID"-->
+<!--            android:value="TEST-867-84W-RZ7Z" />-->
+<!--        <meta-data-->
+<!--            android:name="CLEVERTAP_TOKEN"-->
+<!--            android:value="TEST-04b-a6b" />-->
+
+<!--&#45;&#45;biswa&#45;&#45;-->
         <meta-data
             android:name="CLEVERTAP_ACCOUNT_ID"
-            android:value="TEST-867-84W-RZ7Z" />
+            android:value="TEST-4W5-9RR-646Z" />
         <meta-data
             android:name="CLEVERTAP_TOKEN"
-            android:value="TEST-04b-a6b" /> <!-- EST-Prajwal-Demo2 -->
+            android:value="TEST-22c-504" />
+
+
+
+        <!-- EST-Prajwal-Demo2 -->
         <!-- <meta-data -->
         <!-- android:name="CLEVERTAP_ACCOUNT_ID" -->
         <!-- android:value="TEST-4R4-KW9-RW7Z" /> -->

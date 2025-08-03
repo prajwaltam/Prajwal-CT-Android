@@ -45,6 +45,8 @@ dependencies {
     implementation("androidx.annotation:annotation:1.6.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.6")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.6")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -52,7 +54,10 @@ dependencies {
 
 
     //Added for cleverTap
-    implementation ("com.clevertap.android:clevertap-android-sdk:6.2.1") // checkout the latest sdk version at https://github.com/CleverTap/clevertap-android-sdk/blob/master/README.md#-installation
+    implementation ("com.clevertap.android:clevertap-android-sdk:7.0.0") // checkout the latest sdk version at https://github.com/CleverTap/clevertap-android-sdk/blob/master/README.md#-installation
+
+    implementation ("com.google.android.material:material:1.12.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
 
     //Mandatory for CleverTap Android SDK v3.6.4 and above add the following -
     implementation ("com.android.installreferrer:installreferrer:2.2")
